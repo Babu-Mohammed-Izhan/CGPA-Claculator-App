@@ -1,14 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-import CalcButton from './components/CalcButton';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Homepage from './pages/Homepage';
-import CalculatorPage from './pages/CalculatorPage';
+import React from 'react';
+import { View } from 'react-native';
 
-const Stack = createNativeStackNavigator();
-
-export default function App() {
+const Homepage = () => {
   const data = [
     '1 Semester',
     '2 Semester',
@@ -21,15 +14,28 @@ export default function App() {
     '9 Semester',
     '10 Semester',
   ];
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Homepage} />
-        <Stack.Screen name="Calculator" component={CalculatorPage} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <View style={styles.container}>
+      <StatusBar style="auto" />
+      <View>
+        <Text style={styles.description}>
+          GPA Claculator, calculates your GPA for each semester as well as CGPA
+          for all the semesters combined. (Made for GPAs that are out of 10).
+        </Text>
+      </View>
+      <View style={styles.box}>
+        <Text style={styles.header}>No. of Semesters</Text>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => <CalcButton title={item} color="#000" />}
+          keyExtractor={(item) => item}
+          numColumns="2"
+        />
+      </View>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -60,3 +66,5 @@ const styles = StyleSheet.create({
     marginTop: '2rem',
   },
 });
+
+export default Homepage;

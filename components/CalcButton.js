@@ -1,8 +1,8 @@
-import { Button, View } from 'react-native';
+import { StyleSheet, Button, View } from 'react-native';
 
 const CalcButton = (props) => {
   return (
-    <View>
+    <View style={styles.buttonwrapper}>
       <Button {...props} style={styles.button} />
     </View>
   );
@@ -10,7 +10,13 @@ const CalcButton = (props) => {
 
 const styles = StyleSheet.create({
   button: {
-    padding: '5px',
+    padding: '10px',
+    width: '100%',
+    borderRadius: '10px',
+  },
+  buttonwrapper: {
+    margin: 3,
+    width: '100px',
   },
 });
 

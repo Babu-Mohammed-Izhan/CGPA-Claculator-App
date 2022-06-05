@@ -1,27 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Button from './components/CalcButton';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import CalcButton from './components/CalcButton';
 
 export default function App() {
+  const data = [
+    '1 Semester',
+    '2 Semester',
+    '3 Semester',
+    '4 Semester',
+    '5 Semester',
+    '6 Semester',
+    '7 Semester',
+    '8 Semester',
+    '9 Semester',
+    '10 Semester',
+  ];
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Text>This is the homepage</Text>
-      <Text>
-        GPA Claculator, calculates your GPA for each semester as well as CGPA
-        for all the semesters combined. (Made for GPAs that are out of 10).
-      </Text>
-      <Text>No. of Semesters</Text>
-      <Button title="1 Semester" color="#ddd" />
-      <Button title="2 Semester" color="#ddd" />
-      <Button title="3 Semester" color="#ddd" />
-      <Button title="4 Semester" color="#ddd" />
-      <Button title="5 Semester" color="#ddd" />
-      <Button title="6 Semester" color="#ddd" />
-      <Button title="7 Semester" color="#ddd" />
-      <Button title="8 Semester" color="#ddd" />
-      <Button title="9 Semester" color="#ddd" />
-      <Button title="10 Semester" color="#ddd" />
+      <View>
+        <Text style={styles.description}>
+          GPA Claculator, calculates your GPA for each semester as well as CGPA
+          for all the semesters combined. (Made for GPAs that are out of 10).
+        </Text>
+      </View>
+      <View style={styles.box}>
+        <Text style={styles.header}>No. of Semesters</Text>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => <CalcButton title={item} color="#000" />}
+          keyExtractor={(item) => item}
+          numColumns="2"
+        />
+      </View>
     </View>
   );
 }
@@ -32,5 +43,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginHorizontal: 'auto',
+    width: '80%',
+  },
+  description: {
+    fontSize: '1.5rem',
+  },
+  header: {
+    fontSize: '2rem',
+    marginBottom: '2rem',
+    fontWeight: 700,
+  },
+  box: {
+    width: '100%',
+    padding: '2rem',
+    borderColor: 'black',
+    borderWidth: '3px',
+    borderRadius: '10px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '2rem',
   },
 });

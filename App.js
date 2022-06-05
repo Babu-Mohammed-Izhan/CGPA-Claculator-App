@@ -24,8 +24,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Homepage} />
-        <Stack.Screen name="Calculator" component={CalculatorPage} />
+        <Stack.Screen name="Home">
+          {(props) => <Homepage {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Calculator">
+          {(props) => <CalculatorPage {...props} />}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

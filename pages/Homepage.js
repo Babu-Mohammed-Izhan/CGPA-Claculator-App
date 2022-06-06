@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, StatusBar, FlatList } from 'react-native';
 import CalcButton from '../components/CalcButton';
 

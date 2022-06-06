@@ -1,5 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View, StyleSheet, StatusBar, FlatList } from 'react-native';
+import CalcButton from '../components/CalcButton';
 
 const Homepage = () => {
   const data = [
@@ -16,22 +17,25 @@ const Homepage = () => {
   ];
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containerwrapper}>
       <StatusBar style="auto" />
-      <View>
-        <Text style={styles.description}>
-          GPA Claculator, calculates your GPA for each semester as well as CGPA
-          for all the semesters combined. (Made for GPAs that are out of 10).
-        </Text>
-      </View>
-      <View style={styles.box}>
-        <Text style={styles.header}>No. of Semesters</Text>
-        <FlatList
-          data={data}
-          renderItem={({ item }) => <CalcButton title={item} color="#000" />}
-          keyExtractor={(item) => item}
-          numColumns="2"
-        />
+      <View style={styles.container}>
+        <View>
+          <Text style={styles.description}>
+            GPA Claculator, calculates your GPA for each semester as well as
+            CGPA for all the semesters combined. (Made for GPAs that are out of
+            10).
+          </Text>
+        </View>
+        <View style={styles.box}>
+          <Text style={styles.header}>No. of Semesters</Text>
+          <FlatList
+            data={data}
+            renderItem={({ item }) => <CalcButton title={item} color="#000" />}
+            keyExtractor={(item) => item}
+            numColumns="2"
+          />
+        </View>
       </View>
     </View>
   );
@@ -45,6 +49,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: 'auto',
     width: '80%',
+  },
+  containerwrapper: {
+    height: '100%',
+    backgroundColor: '#fff',
   },
   description: {
     fontSize: '1.5rem',
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '2rem',
+    marginTop: '5rem',
   },
 });
 

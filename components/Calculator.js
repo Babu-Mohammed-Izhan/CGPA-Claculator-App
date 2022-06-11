@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     marginTop: '5rem',
   },
   button: {
-    marginTop: '10px',
+    marginTop: '20px',
   },
 });
 

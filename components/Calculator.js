@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
 import CalcButton from './CalcButton';
 
 const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
@@ -46,8 +46,8 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
   };
 
   return (
-    <View>
-      <View>
+    <View style={styles.containerwrapper}>
+      <View style={styles.container}>
         <Text>Semester {semno}</Text>
         <Text>No.of Subjects:{subjects.length}</Text>
         <Text>Grade Points </Text>
@@ -62,7 +62,7 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
               />
               <TextInput
                 onChange={(e) => {
-                  if (e.target.value > 4) {
+                  if (e.target > 4) {
                     console.log(
                       'This is the incorrect value, credit must be 4 or lower'
                     );
@@ -79,5 +79,42 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 'auto',
+    width: '80%',
+  },
+  containerwrapper: {
+    margin: '20px',
+    height: '100%',
+    backgroundColor: '#fff',
+    fontFamily: 'Inter_900Black',
+  },
+  description: {
+    fontSize: '1.5rem',
+    fontWeight: '800',
+  },
+  header: {
+    fontSize: '2rem',
+    marginBottom: '2rem',
+    fontWeight: 700,
+  },
+  box: {
+    width: '100%',
+    padding: '2rem',
+    borderColor: 'black',
+    borderWidth: '4px',
+    boxShadow: '10px 10px 0px -1px rgba(0,0,0,1)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '5rem',
+  },
+});
 
 export default Calculator;

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, StatusBar, FlatList } from 'react-native';
 import CalcButton from '../components/CalcButton';
+import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 
-const Homepage = () => {
+const Homepage = ({ navigation, setNoOfSemesters }) => {
   const data = [
     '1 Semester',
     '2 Semester',
@@ -15,6 +16,8 @@ const Homepage = () => {
     '9 Semester',
     '10 Semester',
   ];
+
+  let [fontsLoaded] = useFonts({ Inter_900Black });
 
   return (
     <View style={styles.containerwrapper}>
@@ -31,7 +34,17 @@ const Homepage = () => {
           <Text style={styles.header}>No. of Semesters</Text>
           <FlatList
             data={data}
-            renderItem={({ item }) => <CalcButton title={item} color="#000" />}
+            renderItem={({ item }) => (
+              <CalcButton
+                title={item}
+                onPress={() => {
+                  navigation.navigate('Calculator');
+                  data.splice(data.indexOf(item) + 1);
+                  setNoOfSemesters(data);
+                }}
+                color="#000"
+              />
+            )}
             keyExtractor={(item) => item}
             numColumns="2"
           />
@@ -53,9 +66,11 @@ const styles = StyleSheet.create({
   containerwrapper: {
     height: '100%',
     backgroundColor: '#fff',
+    fontFamily: 'Inter_900Black',
   },
   description: {
     fontSize: '1.5rem',
+    fontWeight: '800',
   },
   header: {
     fontSize: '2rem',
@@ -66,8 +81,8 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: '2rem',
     borderColor: 'black',
-    borderWidth: '3px',
-    borderRadius: '10px',
+    borderWidth: '4px',
+    boxShadow: '10px 10px 0px -1px rgba(0,0,0,1)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

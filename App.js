@@ -7,7 +7,7 @@ import CalculatorPage from './pages/CalculatorPage';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [noOfSemesters, setNoOfSemesters] = useState(0);
+  const [noOfSemesters, setNoOfSemesters] = useState([]);
   const [gpaData, setGpaData] = useState({});
   const [ShowGpaData, setShowGpaData] = useState(false);
 

@@ -48,19 +48,23 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
   return (
     <View style={styles.containerwrapper}>
       <View style={styles.container}>
-        <Text>Semester {semno}</Text>
+        <Text>Semester {semno[0]}</Text>
         <Text>No.of Subjects:{subjects.length}</Text>
-        <Text>Grade Points </Text>
-        <Text>Credits</Text>
+        <View style={styles.heading}>
+          <Text>Grade Points </Text>
+          <Text>Credits</Text>
+        </View>
         {subjects.map((n, i) => {
           return (
-            <>
+            <View style={styles.inputs}>
               <TextInput
+                style={styles.input}
                 onChange={(e) => {
                   insertValues(e.target, i + 1, 'point');
                 }}
               />
               <TextInput
+                style={styles.input}
                 onChange={(e) => {
                   if (e.target > 4) {
                     console.log(
@@ -71,10 +75,15 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
                   }
                 }}
               />
-            </>
+            </View>
           );
         })}
-        <CalcButton onPress={handleSubmit} title="Calculate" />
+        <CalcButton
+          style={styles.button}
+          onPress={handleSubmit}
+          title="Calculate"
+          color="#000"
+        />
       </View>
     </View>
   );
@@ -88,6 +97,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: 'auto',
     width: '80%',
+    borderColor: 'black',
+    borderWidth: '4px',
+    marginVertical: '20px',
+    boxShadow: '10px 10px 0px -1px rgba(0,0,0,1)',
   },
   containerwrapper: {
     margin: '20px',
@@ -98,6 +111,19 @@ const styles = StyleSheet.create({
   description: {
     fontSize: '1.5rem',
     fontWeight: '800',
+  },
+  inputs: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  input: {
+    width: '100px',
+    borderColor: 'black',
+    borderWidth: '4px',
+  },
+  heading: {
+    display: 'flex',
+    flexDirection: 'row',
   },
   header: {
     fontSize: '2rem',
@@ -114,6 +140,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: '5rem',
+  },
+  button: {
+    marginTop: '10px',
   },
 });
 

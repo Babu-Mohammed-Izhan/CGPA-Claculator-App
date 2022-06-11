@@ -48,11 +48,11 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
   return (
     <View style={styles.containerwrapper}>
       <View style={styles.container}>
-        <Text>Semester {semno[0]}</Text>
-        <Text>No.of Subjects:{subjects.length}</Text>
+        <Text style={styles.semester}>Semester {semno[0]}</Text>
+        <Text style={styles.subjects}>No.of Subjects:{subjects.length}</Text>
         <View style={styles.heading}>
-          <Text>Grade Points </Text>
-          <Text>Credits</Text>
+          <Text style={styles.heading}>Grade Points </Text>
+          <Text style={styles.heading}>Credits</Text>
         </View>
         {subjects.map((n, i) => {
           return (
@@ -108,6 +108,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     fontFamily: 'Inter_900Black',
   },
+  semester: {
+    fontWeight: '700',
+  },
+  subjects: {
+    fontWeight: '700',
+  },
   description: {
     fontSize: '1.5rem',
     fontWeight: '800',
@@ -124,6 +130,11 @@ const styles = StyleSheet.create({
   heading: {
     display: 'flex',
     flexDirection: 'row',
+    fontWeight: '700',
+    width: '80%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   header: {
     fontSize: '2rem',

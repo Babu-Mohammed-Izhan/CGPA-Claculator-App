@@ -85,12 +85,12 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
             </View>
           );
         })}
-        <CalcButton
+        {/* <CalcButton
           style={styles.button}
           onPress={handleSubmit}
           title="Calculate"
           color="#000"
-        />
+        /> */}
       </View>
     </View>
   );

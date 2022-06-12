@@ -30,7 +30,12 @@ const CalculatorPage = ({ semno }) => {
         numColumns="1"
         style={styles.box}
       />
-      <Button onPress={() => handleCalculation()} />
+      <Button
+        title="Calculate"
+        color="#000"
+        onPress={() => handleCalculation()}
+        style={styles.button}
+      />
     </>
   );
 };
@@ -39,6 +44,9 @@ const styles = StyleSheet.create({
   box: {
     borderColor: 'black',
     borderWidth: '4px',
+  },
+  button: {
+    height: '50px',
   },
 });
 

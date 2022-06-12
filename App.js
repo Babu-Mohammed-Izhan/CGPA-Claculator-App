@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Homepage from './pages/Homepage';
 import CalculatorPage from './pages/CalculatorPage';
+import GpaDataTablePage from './pages/GpaDataTablePage';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,11 @@ export default function App() {
               setShowGpaData={setShowGpaData}
             />
           )}
+        </Stack.Screen>
+        <Stack.Screen name="GpaTable">
+          {(props) => {
+            <GpaDataTablePage />;
+          }}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

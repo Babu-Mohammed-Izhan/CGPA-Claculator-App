@@ -46,16 +46,25 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
       default:
     }
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <View style={styles.containerwrapper}>
       <View style={styles.container}>
         <Text style={styles.semester}>Semester {semno[0]}</Text>
         <Text style={styles.subjects}>No.of Subjects:{subjects.length}</Text>
+        <View style={styles.buttons}>
+          <CalcButton
+            title="+"
+            onPress={() =>
+              setSubjects((prev) => setSubjects([...prev, prev.length + 1]))
+            }
+            color="#000"
+          />
+          <CalcButton
+            title="-"
+            onPress={() => setSubjects((prev) => setSubjects([...prev.pop()]))}
+            color="#000"
+          />
+        </View>
         <View style={styles.heading}>
           <Text style={styles.heading}>Grade Points </Text>
           <Text style={styles.heading}>Credits</Text>
@@ -154,6 +163,9 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: '20px',
+  },
+  buttons: {
+    display: 'flex',
   },
 });
 

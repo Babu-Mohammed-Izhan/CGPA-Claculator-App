@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { View, FlatList, StyleSheet, Button } from 'react-native';
 import Calculator from '../components/Calculator';
 
-const CalculatorPage = ({ semno }) => {
+const CalculatorPage = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
   const itemsRef = useRef([]);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const CalculatorPage = ({ semno }) => {
 
   const handleCalculation = () => {
     itemsRef.current.map((func) => {
-      func.handleFunction(10);
+      func.handleFunction();
     });
   };
 
@@ -22,6 +22,9 @@ const CalculatorPage = ({ semno }) => {
         renderItem={({ item, index }) => (
           <Calculator
             key={item}
+            setGpaData={setGpaData}
+            setShowGpaData={setShowGpaData}
+            gpaData={gpaData}
             ref={(el) => (itemsRef.current[index] = el)}
             semno={item}
           />

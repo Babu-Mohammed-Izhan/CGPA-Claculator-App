@@ -7,8 +7,9 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
   const [credits, setCredits] = useState({});
   const [points, setPoints] = useState({});
 
-  const handleFunction = (x) => {
-    console.log(x);
+  const handleFunction = () => {
+    calculateGpa();
+    setShowGpaData(true);
   };
 
   useImperativeHandle(ref, () => ({
@@ -48,8 +49,6 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    calculateGpa();
-    setShowGpaData(true);
   };
 
   return (
@@ -67,7 +66,7 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
               <TextInput
                 style={styles.input}
                 onChange={(e) => {
-                  insertValues(e.target, i + 1, 'point');
+                  insertValues(e.target.value, i + 1, 'point');
                 }}
               />
               <TextInput
@@ -78,19 +77,13 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
                       'This is the incorrect value, credit must be 4 or lower'
                     );
                   } else {
-                    insertValues(e.target, i + 1, 'credit');
+                    insertValues(e.target.value, i + 1, 'credit');
                   }
                 }}
               />
             </View>
           );
         })}
-        {/* <CalcButton
-          style={styles.button}
-          onPress={handleSubmit}
-          title="Calculate"
-          color="#000"
-        /> */}
       </View>
     </View>
   );

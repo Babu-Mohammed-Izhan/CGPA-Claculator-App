@@ -9,7 +9,7 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
 
   const handleFunction = () => {
     calculateGpa();
-    setShowGpaData(true);
+    navigation.navigate('Calculator');
   };
 
   useImperativeHandle(ref, () => ({

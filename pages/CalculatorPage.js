@@ -2,7 +2,13 @@ import React, { useRef, useEffect } from 'react';
 import { View, FlatList, StyleSheet, Button } from 'react-native';
 import Calculator from '../components/Calculator';
 
-const CalculatorPage = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
+const CalculatorPage = ({
+  navigation,
+  semno,
+  setGpaData,
+  gpaData,
+  setShowGpaData,
+}) => {
   const itemsRef = useRef([]);
 
   useEffect(() => {
@@ -13,6 +19,7 @@ const CalculatorPage = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
     itemsRef.current.map((func) => {
       func.handleFunction();
     });
+    navigation.navigate('GpaTable');
   };
 
   return (

@@ -1,10 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
+import GpaDataTable from '../components/GPADataTable';
 
-const GpaDataTablePage = () => {
+const GpaDataTablePage = ({ gpaData, noOfSemesters }) => {
   return (
     <View>
-      <View></View>
+      <GpaDataTable gpaData={gpaData} noOfSemesters={noOfSemesters} />
     </View>
   );
 };

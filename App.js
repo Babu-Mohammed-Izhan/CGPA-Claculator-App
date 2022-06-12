@@ -39,9 +39,13 @@ export default function App() {
           )}
         </Stack.Screen>
         <Stack.Screen name="GpaTable">
-          {(props) => {
-            <GpaDataTablePage />;
-          }}
+          {(props) => (
+            <GpaDataTablePage
+              {...props}
+              gpaData={gpaData}
+              noOfSemesters={noOfSemesters}
+            />
+          )}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

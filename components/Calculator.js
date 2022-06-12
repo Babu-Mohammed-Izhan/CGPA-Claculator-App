@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useImperativeHandle, forwardRef } from 'react';
 import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
 import CalcButton from './CalcButton';
 
-const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
+const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
   const [subjects, setSubjects] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [credits, setCredits] = useState({});
   const [points, setPoints] = useState({});
 
+  const handleFunction = (x) => {
+    console.log(x);
+  };
+
+  useImperativeHandle(ref, () => ({
+    handleFunction,
+  }));
   const calculateGpa = () => {
     let tempArray = [];
     subjects.forEach((subno, i) => {
@@ -56,7 +63,7 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }) => {
         </View>
         {subjects.map((n, i) => {
           return (
-            <View style={styles.inputs}>
+            <View key={i} style={styles.inputs}>
               <TextInput
                 style={styles.input}
                 onChange={(e) => {
@@ -157,4 +164,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Calculator;
+export default forwardRef(Calculator);

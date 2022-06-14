@@ -21,8 +21,6 @@ const GpaDataTable = ({ gpaData, noOfSemesters }) => {
     }
   }, [gpaData, noOfSemesters]);
 
-  console.log(gpaData);
-
   return (
     <View style={styles.tablewrapper}>
       <View style={styles.table}>

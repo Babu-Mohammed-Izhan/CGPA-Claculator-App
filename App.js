@@ -12,8 +12,6 @@ export default function App() {
   const [gpaData, setGpaData] = useState({});
   const [ShowGpaData, setShowGpaData] = useState(false);
 
-  console.log(gpaData);
-
   return (
     <NavigationContainer>
       <Stack.Navigator>

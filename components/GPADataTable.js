@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const GpaDataTable = ({ gpaData, noOfSemesters }) => {
   const [Cgpa, setCgpa] = useState(0);
@@ -24,9 +24,9 @@ const GpaDataTable = ({ gpaData, noOfSemesters }) => {
   console.log(gpaData);
 
   return (
-    <View className="gpa-data-wrapper">
-      <View className="container gpa-data-table">
-        <Text className="cgpa">CGPA : {Cgpa}</Text>
+    <View style={styles.tablewrapper}>
+      <View style={styles.table}>
+        <Text style={styles.cgpa}>CGPA : {Cgpa}</Text>
         <View>
           {gpaData &&
             Object.keys(gpaData).map(([key, value]) => {
@@ -44,5 +44,11 @@ const GpaDataTable = ({ gpaData, noOfSemesters }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  tablewrapper: {},
+  table: {},
+  cgpa: {},
+});
 
 export default GpaDataTable;

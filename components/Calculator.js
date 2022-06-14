@@ -54,6 +54,7 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
           <CalcButton
             title="+"
             onPress={() => setSubjects((prev) => [...prev, prev.length + 1])}
+            style={styles.subbutton}
             color="#000"
           />
           <CalcButton
@@ -61,6 +62,7 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
             onPress={() => {
               setSubjects((prev) => prev.slice(0, prev.length - 1));
             }}
+            style={styles.subbutton}
             color="#000"
           />
         </View>
@@ -118,6 +120,9 @@ const styles = StyleSheet.create({
   },
   semester: {
     fontWeight: '700',
+  },
+  subbutton: {
+    fontSize: '2rem',
   },
   subjects: {
     fontWeight: '700',

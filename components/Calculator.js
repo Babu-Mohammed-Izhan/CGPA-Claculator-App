@@ -16,8 +16,8 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
   }));
   const calculateGpa = () => {
     let tempArray = [];
-    subjects.forEach((subno, i) => {
-      tempArray.push(credits[i + 1] * points[i + 1]);
+    Object.keys(points).forEach((i) => {
+      tempArray.push(credits[i] * points[i]);
     });
     const numerator = tempArray.reduce((a, b) => a + b);
     const denominator = Object.values(credits).reduce(
@@ -53,14 +53,14 @@ const Calculator = ({ semno, setGpaData, gpaData, setShowGpaData }, ref) => {
         <View style={styles.buttons}>
           <CalcButton
             title="+"
-            onPress={() =>
-              setSubjects((prev) => setSubjects([...prev, prev.length + 1]))
-            }
+            onPress={() => setSubjects((prev) => [...prev, prev.length + 1])}
             color="#000"
           />
           <CalcButton
             title="-"
-            onPress={() => setSubjects((prev) => setSubjects([...prev.pop()]))}
+            onPress={() => {
+              setSubjects((prev) => prev.slice(0, prev.length - 1));
+            }}
             color="#000"
           />
         </View>
@@ -165,6 +165,9 @@ const styles = StyleSheet.create({
   },
   buttons: {
     display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
   },
 });
 

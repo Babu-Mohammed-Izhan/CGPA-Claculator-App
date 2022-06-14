@@ -5,7 +5,6 @@ import { View, Text, StyleSheet } from 'react-native';
 const GpaDataTable = ({ gpaData, noOfSemesters }) => {
   const [Cgpa, setCgpa] = useState(0);
   useEffect(() => {
-    console.log(noOfSemesters.length);
     if (noOfSemesters.length === 1) {
       setCgpa(gpaData['1 Semester'].gpa);
     }
@@ -21,6 +20,8 @@ const GpaDataTable = ({ gpaData, noOfSemesters }) => {
     }
   }, [gpaData, noOfSemesters]);
 
+  console.log(gpaData);
+
   return (
     <View style={styles.tablewrapper}>
       <View style={styles.table}>
@@ -28,7 +29,6 @@ const GpaDataTable = ({ gpaData, noOfSemesters }) => {
         <View>
           {gpaData &&
             Object.keys(gpaData).map(([key, value]) => {
-              console.log(key);
               return (
                 <View key={key} className="gpa">
                   <Text>
@@ -44,7 +44,11 @@ const GpaDataTable = ({ gpaData, noOfSemesters }) => {
 };
 
 const styles = StyleSheet.create({
-  tablewrapper: {},
+  tablewrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   table: {},
   cgpa: {},
 });
